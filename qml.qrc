@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>AddPlayers.qml</file>
+        <file>Blanco.qml</file>
+    </qresource>
+</RCC>
