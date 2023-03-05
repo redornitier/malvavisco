@@ -8,24 +8,21 @@ Window {
     height: 960
     visibility: Qt.platform.os === "android" ? "FullScreen" : "Windowed"
     title: qsTr("Hello World")
-    color: "#3366cc"
 
-    Button{
-        anchors.centerIn: parent
-        text: "GO"
-        font.pixelSize: 70
-        font.bold: true
-        width: parent.width * 0.5
-        height: parent.height * 0.1
-        onClicked: addPlayers.visible = true
-    }
-    AddPlayers{
-        id: addPlayers
+    StackView{
+        id: stack
         anchors.fill: parent
-        visible: false
+        initialItem: Home{
+            stackView: stack
+        }
     }
 
-    Component.onCompleted: {
-        print("OS", Qt.platform.os)
+    onClosing: {
+        if(stack.depth > 1){
+            close.accepted = false
+            stack.pop();
+        }else{
+            return;
+        }
     }
 }

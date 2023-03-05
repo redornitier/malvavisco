@@ -5,6 +5,8 @@ Rectangle {
     id: root
     color: "#de6449"
     property var players: []
+    property StackView stackView
+    property Item blanco: Blanco{}
 
     Text{
         anchors.horizontalCenter: parent.horizontalCenter
@@ -63,13 +65,7 @@ Rectangle {
         height: parent.height * 0.1
         onClicked: {
             blanco.players = root.players
-            blanco.visible = true
+            stackView.push(blanco)
         }
-    }
-
-    Blanco{
-        id: blanco
-        anchors.fill: parent
-        visible: false
     }
 }
