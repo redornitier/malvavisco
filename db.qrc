@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>palabras.sqlite</file>
+    </qresource>
+</RCC>
