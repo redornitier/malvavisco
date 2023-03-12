@@ -20,6 +20,7 @@ set(PROJECT_SOURCES
         main.cpp
         qml.qrc
         db.qrc
+        image.qrc
         blancocontroller.cpp
 )
 
