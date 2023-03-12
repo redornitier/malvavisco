@@ -4,5 +4,6 @@
         <file>AddPlayers.qml</file>
         <file>Blanco.qml</file>
         <file>Home.qml</file>
+        <file>Training.qml</file>
     </qresource>
 </RCC>
