@@ -131,3 +131,81 @@ void BlancoController::setCurrentPlayer(const QString &newCurrentPlayer)
     currentPlayer = newCurrentPlayer;
     emit currentPlayerChanged();
 }
+
+QString BlancoController::getGameName() const
+{
+    return gameName;
+}
+
+void BlancoController::setGameName(const QString &newGameName)
+{
+    if (gameName == newGameName)
+        return;
+    gameName = newGameName;
+    emit gameNameChanged();
+}
+
+QString BlancoController::getGameSimpleDescription() const
+{
+    return gameSimpleDescription;
+}
+
+void BlancoController::setGameSimpleDescription(const QString &newGameSimpleDescription)
+{
+    if (gameSimpleDescription == newGameSimpleDescription)
+        return;
+    gameSimpleDescription = newGameSimpleDescription;
+    emit gameSimpleDescriptionChanged();
+}
+
+QString BlancoController::getGameDetailedDescription() const
+{
+    return gameDetailedDescription;
+}
+
+void BlancoController::setGameDetailedDescription(const QString &newGameDetailedDescription)
+{
+    if (gameDetailedDescription == newGameDetailedDescription)
+        return;
+    gameDetailedDescription = newGameDetailedDescription;
+    emit gameDetailedDescriptionChanged();
+}
+
+uchar BlancoController::getGameMinPlayers() const
+{
+    return gameMinPlayers;
+}
+
+void BlancoController::setGameMinPlayers(uchar newGameMinPlayers)
+{
+    if (gameMinPlayers == newGameMinPlayers)
+        return;
+    gameMinPlayers = newGameMinPlayers;
+    emit gameMinPlayersChanged();
+}
+
+uchar BlancoController::getGameMaxPlayers() const
+{
+    return gameMaxPlayers;
+}
+
+void BlancoController::setGameMaxPlayers(uchar newGameMaxPlayers)
+{
+    if (gameMaxPlayers == newGameMaxPlayers)
+        return;
+    gameMaxPlayers = newGameMaxPlayers;
+    emit gameMaxPlayersChanged();
+}
+
+uchar BlancoController::getGameEstimatedDuration() const
+{
+    return gameEstimatedDuration;
+}
+
+void BlancoController::setGameEstimatedDuration(uchar newGameEstimatedDuration)
+{
+    if (gameEstimatedDuration == newGameEstimatedDuration)
+        return;
+    gameEstimatedDuration = newGameEstimatedDuration;
+    emit gameEstimatedDurationChanged();
+}

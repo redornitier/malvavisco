@@ -6,7 +6,7 @@ Rectangle {
     id: root
     property StackView stackView
     color: "#3366cc"
-    property Item addPlayers: AddPlayers{
+    property Item gameSetUp: GameSetUp{
         stackView: root.stackView
     }
 
@@ -77,7 +77,7 @@ Rectangle {
                 Rectangle{
                     id: rect
                     anchors.centerIn: parent
-                    radius: 5
+                    radius: 10
                     border.color: "black"
                     border.width: 0
                     color: "white"
@@ -124,7 +124,7 @@ Rectangle {
                         anchors.fill: parent
                         onReleased: {
                             if(index === 0){
-                                stackView.push(addPlayers)
+                                stackView.push(gameSetUp)
                             }
                         }
                     }
