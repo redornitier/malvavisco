@@ -2,6 +2,7 @@
 #include <QSqlDatabase>
 #include <QDir>
 #include <QSqlQuery>
+#include <QSqlError>
 #include <QRandomGenerator>
 #include <QStandardPaths>
 #include <QtMath>
@@ -39,11 +40,15 @@ void BlancoController::calculateWord()
     db.setDatabaseName(wordsDbPath);
     db.open();
 
-    QSqlQuery query("SELECT palabra FROM palabras WHERE palabra_id = ?", db);
-    query.bindValue(0, QRandomGenerator::global()->bounded(1, 55092));
-    query.exec();
-    query.first();
-    currentWord = query.value(0).toString();
+    QSqlQuery query;
+    int randomIndex = QRandomGenerator::global()->bounded(1, 55092);
+    query.prepare("SELECT palabra FROM palabras LIMIT 1 OFFSET :randomIndex");
+    query.bindValue(":randomIndex", randomIndex);
+
+    if(query.exec() && query.next())
+        currentWord = query.value(0).toString();
+    else
+        qDebug() << "Error al ejecutar la consulta: " << query.lastError().text();
 }
 
 void BlancoController::distributePlayers()
