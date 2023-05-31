@@ -42,17 +42,17 @@ Rectangle {
             id: myModel
             ListElement {
                 gameName: "Blanco"
-                gameImageSource: "qrc:/res/barrywhite.jpg"
+                gameImageSource: "qrc:/barrywhite.jpg"
                 gameDescription: "Miente para que no sepan que no tienes ni idea. Ya tienes práctica, ¿no?"
             }
             ListElement {
                 gameName: "Lobos"
-                gameImageSource: "qrc:/res/lobo-como-oveja.jpg"
+                gameImageSource: "qrc:/lobo-como-oveja.jpg"
                 gameDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
             }
             ListElement {
                 gameName: "Mímica"
-                gameImageSource: "qrc:/res/charades.jpg"
+                gameImageSource: "qrc:/charades.jpg"
                 gameDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
             }
             ListElement {

@@ -4,8 +4,8 @@ import QtQuick.Controls 2.15
 
 Window {
     visible: true
-    width: 480
-    height: 960
+    width: 480 * 0.8
+    height: 960 * 0.8
     visibility: Qt.platform.os === "android" ? "FullScreen" : "Windowed"
     title: qsTr("Hello World")
 

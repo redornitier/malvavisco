@@ -9,7 +9,7 @@ Rectangle {
     property int numberOfWorldItems: 0
     Image{
         anchors.fill: parent
-        source: "qrc:/res/grid2.png"
+        source: "qrc:/grid2.png"
     }
 //    WorldItem{
 //        id: rect

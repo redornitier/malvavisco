@@ -13,7 +13,7 @@ Rectangle {
         contentWidth: 670; contentHeight: 1191;
         contentX: 95 // los pixeles que sobran / 2
         contentY: 115 // los pixeles que sobran / 2
-        GameWorld{
+        GameDrawer{
 //            anchors.centerIn: parent
         }
     }

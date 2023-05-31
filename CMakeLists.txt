@@ -13,15 +13,15 @@ find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core Quick Sql)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Quick Sql)
 
 set(PROJECT_HEADERS
-    blancocontroller.h
+    src/blancocontroller.h
 )
 
 set(PROJECT_SOURCES
-        main.cpp
-        qml.qrc
-        db.qrc
-        image.qrc
-        blancocontroller.cpp
+        src/main.cpp
+        src/qml/qml.qrc
+        res/db.qrc
+        res/image.qrc
+        src/blancocontroller.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
