@@ -12,8 +12,8 @@ Window {
     StackView{
         id: stack
         anchors.fill: parent
-        initialItem: Home{
-            stackView: stack
+        initialItem: Home2{
+            //stackView: stack
         }
     }
 
@@ -26,5 +26,5 @@ Window {
         }
     }
 
-    Training{}
+    //Training{}
 }

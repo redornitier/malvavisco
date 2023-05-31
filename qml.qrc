@@ -6,5 +6,8 @@
         <file>Home.qml</file>
         <file>Training.qml</file>
         <file>GameSetUp.qml</file>
+        <file>Home2.qml</file>
+        <file>GameDrawer.qml</file>
+        <file>GameDrawerItem.qml</file>
     </qresource>
 </RCC>
