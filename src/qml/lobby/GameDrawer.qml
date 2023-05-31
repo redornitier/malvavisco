@@ -1,9 +1,10 @@
 import QtQuick 2.15
 import QtQml.Models 2.15
+import Malvavisco 1.0
 
 Rectangle {
     id: root
-    color: "green"
+    color: Common.col
     width: 670
     height: 1191
     property int numberOfWorldItems: 0

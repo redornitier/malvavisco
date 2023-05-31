@@ -6,8 +6,9 @@
         <file>Home.qml</file>
         <file>Training.qml</file>
         <file>GameSetUp.qml</file>
-        <file>Home2.qml</file>
-        <file>GameDrawer.qml</file>
-        <file>GameDrawerItem.qml</file>
+        <file>lobby/Home2.qml</file>
+        <file>lobby/GameDrawer.qml</file>
+        <file>lobby/GameDrawerItem.qml</file>
+        <file>Common.qml</file>
     </qresource>
 </RCC>

@@ -12,6 +12,7 @@ int main(int argc, char *argv[])
 #endif
     QGuiApplication app(argc, argv);
     qmlRegisterType<BlancoController>("BlancoController", 1,0, "BlancoController");
+    qmlRegisterSingletonType(QUrl("qrc:/Common.qml"), "Malvavisco", 1, 0, "Common");
 
     QQmlApplicationEngine engine;
     const QUrl url(QStringLiteral("qrc:/main.qml"));
