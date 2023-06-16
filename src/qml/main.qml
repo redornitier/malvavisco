@@ -5,8 +5,8 @@ import "qrc:/lobby"
 
 Window {
     visible: true
-    width: 480
-    height: 960
+    width: Common.appWidth
+    height: Common.appHeight
     visibility: Qt.platform.os === "android" ? "FullScreen" : "Windowed"
     title: qsTr("Hello World")
 
@@ -16,6 +16,7 @@ Window {
         initialItem: Home2{
             //stackView: stack
         }
+        Component.onCompleted: Common.stackView = stack
     }
 
     onClosing: {

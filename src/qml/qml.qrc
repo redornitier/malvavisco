@@ -10,5 +10,6 @@
         <file>lobby/GameDrawer.qml</file>
         <file>lobby/GameDrawerItem.qml</file>
         <file>Common.qml</file>
+        <file>lobby/CardView.qml</file>
     </qresource>
 </RCC>
