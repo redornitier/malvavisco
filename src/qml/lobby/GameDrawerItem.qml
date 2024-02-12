@@ -7,8 +7,8 @@ Rectangle {
 
     color: "white"
 
-    width: 480/2
-    height: 960/2
+    width: 480/4
+    height: 960/5
     Component{
         id: aux
         CardView{
@@ -19,7 +19,9 @@ Rectangle {
 
     MouseArea{
         anchors.fill: parent
-        onClicked: Common.stackView.push(aux)
+        onClicked: print(index)
+        //onClicked: Common.stackView.push(aux)
+        //onClicked: Common.stackView.push({item: aux, inmediate: true})
     }
 //    Component.onCompleted: print("parent", parent)
 }

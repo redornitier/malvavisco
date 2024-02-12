@@ -26,14 +26,15 @@ Rectangle {
         delegate: GameDrawerItem {
             x: model.posX
             y: model.posY
+
         }
     }
 
     Component.onCompleted: {
-        root.numberOfWorldItems = calculateRectangles(root.width, root.height, 120, 192, 30)
+        root.numberOfWorldItems = calculateRectangles(root.width, root.height, 120, 192, 10)
         print(root.numberOfWorldItems)
         for(var i = 0; i < root.numberOfWorldItems; i++){
-            var pos = calculatePosition(i, root.width, 120, 192, 30)
+            var pos = calculatePosition(i, root.width, 120, 192, 10)
 //            print("position for", i, pos.x, pos.y)
             worldItemModel.append({'posX': pos.x, 'posY': pos.y})
         }
