@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>fonts/Monofett-Regular.ttf</file>
+        <file>fonts/Jua-Regular.ttf</file>
+        <file>fonts/Hind-Regular.ttf</file>
+    </qresource>
+</RCC>

@@ -11,6 +11,14 @@ Window {
     visibility: Qt.platform.os === "android" ? "FullScreen" : "Windowed"
     title: qsTr("Hello World")
 
+    FontLoader {id: monofett; source: "fonts/Monofett-Regular.ttf"}
+    FontLoader {id: jua; source: "qrc:/fonts/Jua-Regular.ttf"}
+    FontLoader {id: hind; source: "qrc:/fonts/Hind-Regular.ttf"}
+
+    TestGameBox{}
+
+
+/*
     StackView{
         id: stack
         anchors.fill: parent
@@ -87,6 +95,6 @@ Window {
             return;
         }
     }
-
+    */
     //Training{}
 }

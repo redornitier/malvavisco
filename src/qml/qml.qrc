@@ -11,5 +11,7 @@
         <file>lobby/GameDrawerItem.qml</file>
         <file>Common.qml</file>
         <file>lobby/CardView.qml</file>
+        <file>TestGameBox.qml</file>
+        <file>TestGameCard.qml</file>
     </qresource>
 </RCC>

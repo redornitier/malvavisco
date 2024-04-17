@@ -39,6 +39,7 @@ else()
         add_library(malvavisco SHARED
             ${PROJECT_HEADERS}
             ${PROJECT_SOURCES}
+            res/fonts.qrc
         )
 # Define properties for Android with Qt 5 after find_package() calls as:
 #    set(ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android")
@@ -46,6 +47,8 @@ else()
         add_executable(malvavisco
             ${PROJECT_HEADERS}
             ${PROJECT_SOURCES}
+            res/fonts.qrc
+
         )
     endif()
 endif()
