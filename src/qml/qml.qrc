@@ -13,5 +13,6 @@
         <file>lobby/CardView.qml</file>
         <file>TestGameBox.qml</file>
         <file>TestGameCard.qml</file>
+        <file>CarruselElementTemplate.qml</file>
     </qresource>
 </RCC>

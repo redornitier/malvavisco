@@ -51,9 +51,19 @@ Item {
         x: 14
         y: 40
         Behavior on opacity {NumberAnimation {duration: 200}}
+        MouseArea{
+            anchors.fill: parent
+            onClicked: {
+                // reset all game cards
+                blanco.state = "small"
+                lobos.state = "small"
+            }
+        }
+        z: (root.state === "gameselected") ? 2 : 0
     }
 
     TestGameCard{
+        id: blanco
         x: 58
         y: 215
         name: "BLANCO"
@@ -63,7 +73,7 @@ Item {
         maxPeople: 15
         difficulty: 1
         onStateChanged: {
-            if(state === "big"){
+            if(state === "medium" || state === "big"){
                 root.state = "gameselected"
             }else{
                 root.state = "default"
@@ -72,6 +82,7 @@ Item {
     }
 
     TestGameCard{
+        id: lobos
         x: 58
         y: 475
         name: "LOS LOBOS"
@@ -81,7 +92,7 @@ Item {
         maxPeople: 15
         difficulty: 2
         onStateChanged: {
-            if(state === "big"){
+            if(state === "medium" || state === "big"){
                 root.state = "gameselected"
             }else{
                 root.state = "default"
@@ -89,24 +100,11 @@ Item {
         }
     }
 
-    Image{
-        id: play
-        source: "qrc:/play.png"
-        x: 119
-        y: 753
-        z: 1
-        Behavior on opacity {NumberAnimation {duration: 200}}
-    }
-
     states: [
         State {
             name: "default"
             PropertyChanges {
                 target: back
-                opacity: 0
-            }
-            PropertyChanges {
-                target: play
                 opacity: 0
             }
         },

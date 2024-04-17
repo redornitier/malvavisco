@@ -1,4 +1,5 @@
 import QtQuick 2.15
+import QtQuick.Controls 2.15
 
 Item{
     // propiedades dinamicas
@@ -145,13 +146,105 @@ Item{
         Behavior on y {NumberAnimation {duration: 200}}
     }
 
+    Image{
+        id: path
+        source: "qrc:/path.png"
+        x: 19
+        y: 227
+        width: 311
+        height: 8
+        Behavior on opacity {NumberAnimation {duration: 200}}
+    }
+
     MouseArea{
         anchors.fill: parent
         onClicked: {
             if(root.state == "small")
+                root.state = "medium"
+        }
+    }
+
+    Item{
+        id: carrusel
+        width: 297
+        height: 360
+        x: 29
+        y: 287
+        opacity: 0
+        clip: true
+        Behavior on opacity {NumberAnimation {duration: 200}}
+        SwipeView {
+            id: view
+
+            currentIndex: 0
+            width: 297
+            height: 260
+
+            CarruselElementTemplate{
+                id: firstPage
+                text: "El móvil a algunos les dirá un substantivo.\nEsos serán los que saben"
+                image: "qrc:/Group 56.png"
+            }
+            CarruselElementTemplate {
+                id: secondPage
+                text: "El móvil a algunos les dirá un substantivo.\nEsos serán los que saben"
+                image: "qrc:/Group 56.png"
+            }
+            CarruselElementTemplate {
+                id: thirdPage
+                text: "El móvil a algunos les dirá un substantivo.\nEsos serán los que saben"
+                image: "qrc:/Group 56.png"
+            }
+            CarruselElementTemplate {
+                id: fourthPage
+                text: "El móvil a algunos les dirá un substantivo.\nEsos serán los que saben"
+                image: "qrc:/Group 56.png"
+            }
+            CarruselElementTemplate {
+                id: fifthPage
+                text: "El móvil a algunos les dirá un substantivo.\nEsos serán los que saben"
+                image: "qrc:/Group 56.png"
+            }
+        }
+
+        PageIndicator {
+            id: indicator
+
+            count: view.count
+            currentIndex: view.currentIndex
+
+            anchors.horizontalCenter: view.horizontalCenter
+            y: 299
+            delegate: Rectangle {
+                    implicitWidth: 5
+                    implicitHeight: 5
+
+                    radius: width / 2
+                    color: index === indicator.currentIndex ? "#FF83A1" : "#FFFFFF"
+
+
+                    Behavior on color {
+                        ColorAnimation {
+                            duration: 100
+                        }
+                    }
+                }
+        }
+    }
+
+    Image{
+        id: play
+        source: "qrc:/play.png"
+        x: 100
+        y: 663
+        z: 1
+        opacity: 0
+        //Behavior on opacity {NumberAnimation {duration: 200}}
+        MouseArea{
+            anchors.fill: parent
+            onClicked: {
                 root.state = "big"
-            else
-                root.state = "small"
+            }
         }
     }
 
@@ -159,9 +252,13 @@ Item{
     states: [
         State {
             name: "small"
+            PropertyChanges {
+                target: path
+                opacity: 0
+            }
         },
         State {
-            name: "big"
+            name: "medium"
             PropertyChanges {
                 target: baseRect
                 x: 3
@@ -173,7 +270,7 @@ Item{
             PropertyChanges {
                 target: root
                 width: 355
-                height: 687
+                height: 687 + 25
                 x: 19
                 y: 90
                 z: 1
@@ -222,6 +319,71 @@ Item{
                 target: peopleText
                 x: 305
                 y: 182
+            }
+            PropertyChanges {
+                target: play
+                opacity: 1
+            }
+            PropertyChanges {
+                target: carrusel
+                opacity: 1
+            }
+        },
+        State {
+            name: "big"
+            PropertyChanges {
+                target: baseRect
+                x: 0
+                y: 0
+                width: 390
+                height: 844
+                radius: 0
+            }
+            PropertyChanges {
+                target: root
+                width: 390
+                height: 844
+                x: 0
+                y: 0
+                z: 1
+            }
+            PropertyChanges {
+                target: favourite
+                opacity: 0
+            }
+            PropertyChanges {
+                target: name
+                x: 139
+                y: 40
+            }
+            PropertyChanges {
+                target: type
+                x: 150
+                y: 71
+            }
+            PropertyChanges {
+                target: difficultyText
+                opacity: 0
+            }
+            PropertyChanges {
+                target: difficultyIcon
+                opacity: 0
+            }
+            PropertyChanges {
+                target: timeIcon
+                opacity: 0
+            }
+            PropertyChanges {
+                target: timeText
+                opacity: 0
+            }
+            PropertyChanges {
+                target: peopleIcon
+                opacity: 0
+            }
+            PropertyChanges {
+                target: peopleText
+                opacity: 0
             }
         }
 
