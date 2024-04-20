@@ -40,6 +40,9 @@ else()
             ${PROJECT_HEADERS}
             ${PROJECT_SOURCES}
             res/fonts.qrc
+            src/model/gamemodel.h src/model/gamemodel.cpp
+            res/json.qrc
+            src/model/blancomodel.h src/model/blancomodel.cpp
         )
 # Define properties for Android with Qt 5 after find_package() calls as:
 #    set(ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android")
@@ -48,6 +51,9 @@ else()
             ${PROJECT_HEADERS}
             ${PROJECT_SOURCES}
             res/fonts.qrc
+            src/model/gamemodel.h src/model/gamemodel.cpp
+            res/json.qrc
+            src/model/blancomodel.h src/model/blancomodel.cpp
 
         )
     endif()

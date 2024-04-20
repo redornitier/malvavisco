@@ -1,8 +1,10 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
+import QtGraphicalEffects 1.15
 
 Item{
     // propiedades dinamicas
+    property var model
     property string animal: ""
     property string name: ""
     property string type: ""
@@ -32,15 +34,6 @@ Item{
         Behavior on width {NumberAnimation {duration: 200}}
         Behavior on height {NumberAnimation {duration: 200}}
         Behavior on radius {NumberAnimation {duration: 200}}
-        Behavior on x {NumberAnimation {duration: 200}}
-        Behavior on y {NumberAnimation {duration: 200}}
-    }
-
-    Image{
-        id: favourite
-        source: "qrc:/image/favourite_indicator.png"
-        x: 197
-        y: 45
         Behavior on x {NumberAnimation {duration: 200}}
         Behavior on y {NumberAnimation {duration: 200}}
     }
@@ -164,6 +157,37 @@ Item{
         }
     }
 
+    Image{
+        id: favourite
+        property bool favorited: false
+        source: "qrc:/image/Vector.png"
+        x: 197
+        y: 45
+        transformOrigin: Item.TopLeft
+        Behavior on scale {NumberAnimation {duration: 200}}
+        Behavior on x {NumberAnimation {duration: 200}}
+        Behavior on y {NumberAnimation {duration: 200}}
+        ColorOverlay {
+            id: colorOverlay
+            anchors.fill: parent
+            source: parent
+            color: "#FF83A1"
+            scale: favourite.favorited ? 1 : 0
+            opacity: favourite.favorited ? 1 : 0
+            Behavior on opacity {NumberAnimation {duration: 100}}
+            Behavior on scale {NumberAnimation {duration: 100}}
+        }
+        MouseArea{
+            anchors.fill: parent
+            onClicked: {
+                if(favourite.favorited)
+                    favourite.favorited = 0
+                else
+                    favourite.favorited = 1
+            }
+        }
+    }
+
     Item{
         id: carrusel
         width: 297
@@ -180,33 +204,15 @@ Item{
             width: 297
             height: 260
 
-            CarruselElementTemplate{
-                id: firstPage
-                text: "El móvil a algunos les dirá un substantivo.\nEsos serán los que saben"
-                image: "qrc:/image/Group 56.png"
-            }
-            CarruselElementTemplate {
-                id: secondPage
-                text: "El móvil a algunos les dirá un substantivo.\nEsos serán los que saben"
-                image: "qrc:/image/Group 56.png"
-            }
-            CarruselElementTemplate {
-                id: thirdPage
-                text: "El móvil a algunos les dirá un substantivo.\nEsos serán los que saben"
-                image: "qrc:/image/Group 56.png"
-            }
-            CarruselElementTemplate {
-                id: fourthPage
-                text: "El móvil a algunos les dirá un substantivo.\nEsos serán los que saben"
-                image: "qrc:/image/Group 56.png"
-            }
-            CarruselElementTemplate {
-                id: fifthPage
-                text: "El móvil a algunos les dirá un substantivo.\nEsos serán los que saben"
-                image: "qrc:/image/Group 56.png"
+            Repeater {
+                model: root.model ? root.model.description.length : 0
+                CarruselElementTemplate{
+                    id: firstPage
+                    text: root.model.description[index].first
+                    image: root.model.description[index].second
+                }
             }
         }
-
         PageIndicator {
             id: indicator
 
@@ -256,6 +262,10 @@ Item{
                 target: path
                 opacity: 0
             }
+            PropertyChanges {
+                target: favourite
+                scale: 0.625
+            }
         },
         State {
             name: "medium"
@@ -277,8 +287,8 @@ Item{
             }
             PropertyChanges {
                 target: favourite
-                x: 297
-                y: 78
+                x: 297+4
+                y: 78+6
             }
             PropertyChanges {
                 target: name

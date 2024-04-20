@@ -66,12 +66,14 @@ Item {
         id: blanco
         x: 58
         y: 215
-        name: "BLANCO"
-        type: "Roles Ocultos"
-        time: 15
-        minPeople: 4
-        maxPeople: 15
-        difficulty: 1
+        model: BlancoModel
+        name: BlancoModel.name
+        animal: BlancoModel.animal
+        type: BlancoModel.type
+        time: BlancoModel.estimatedTime
+        minPeople: BlancoModel.minPeople
+        maxPeople: BlancoModel.maxPeople
+        difficulty: BlancoModel.difficulty
         onStateChanged: {
             if(state === "medium" || state === "big"){
                 root.state = "gameselected"

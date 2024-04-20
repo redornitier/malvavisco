@@ -1,0 +1,15 @@
+{
+    "name": "Branco",
+    "animal": "cat1",
+    "type": "Roles Ocultos",
+    "difficulty": 1,
+    "estimatedTime": 15,
+    "minPeople": 4,
+    "maxPeople": 15,
+    "description" : [
+        [ "El móvil a algunos les dirá un substantivo.\nEsos serán los que saben", "qrc:/image/Group 56.png"],
+        [ "El móvil a algunos les dirá un substantivo.\nEsos serán los que saben", "qrc:/image/Group 56.png"],
+        [ "El móvil a algunos les dirá un substantivo.\nEsos serán los que saben", "qrc:/image/Group 56.png"],
+        [ "El móvil a algunos les dirá un substantivo.\nEsos serán los que saben", "qrc:/image/Group 56.png"]
+    ]
+}

@@ -16,8 +16,8 @@
         <file>image/Property 1=level_4.png</file>
         <file>image/Property 1=level_5.png</file>
         <file>image/Property 1=Default.png</file>
-        <file>image/favourite_indicator.png</file>
         <file>image/path.png</file>
         <file>image/Group 56.png</file>
+        <file>image/Vector.png</file>
     </qresource>
 </RCC>

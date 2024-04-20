@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>json/blancoStatic.json</file>
+        <file>json/blancoDynamic</file>
+    </qresource>
+</RCC>
