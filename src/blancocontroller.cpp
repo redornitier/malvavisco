@@ -31,7 +31,7 @@ void BlancoController::calculateWord()
             qDebug() << "Could not obtain writable location.";
             return;
         }
-        wordsDbPath.append("/palabras.db");
+        wordsDbPath.append("/db/palabras.db");
         file.copy(wordsDbPath) ;
         QFile::setPermissions(wordsDbPath ,QFile::WriteOwner | QFile::ReadOwner) ;
     } else qDebug() << "the file does not exist" ;

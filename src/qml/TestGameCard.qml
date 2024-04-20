@@ -38,7 +38,7 @@ Item{
 
     Image{
         id: favourite
-        source: "qrc:/favourite_indicator.png"
+        source: "qrc:/image/favourite_indicator.png"
         x: 197
         y: 45
         Behavior on x {NumberAnimation {duration: 200}}
@@ -87,17 +87,17 @@ Item{
         y: 75 + 75
         source: {
             if(root.difficulty === 5){
-                "qrc:/Property 1=level_5.png"
+                "qrc:/image/Property 1=level_5.png"
             }else if(root.difficulty === 4){
-                "qrc:/Property 1=level_4.png"
+                "qrc:/image/Property 1=level_4.png"
             }else if(root.difficulty === 3){
-                "qrc:/Property 1=level_3.png"
+                "qrc:/image/Property 1=level_3.png"
             }else if(root.difficulty === 2){
-                "qrc:/Property 1=level_2.png"
+                "qrc:/image/Property 1=level_2.png"
             }else if(root.difficulty === 1){
-                "qrc:/Property 1=level_1.png"
+                "qrc:/image/Property 1=level_1.png"
             }else{
-                "qrc:/Property 1=Default.png"
+                "qrc:/image/Property 1=Default.png"
             }
         }
         Behavior on x {NumberAnimation {duration: 200}}
@@ -106,7 +106,7 @@ Item{
 
     Image{
         id: timeIcon
-        source: "qrc:/tabler_clock-filled.png"
+        source: "qrc:/image/tabler_clock-filled.png"
         x: 23 + 12
         y: 75 + 111
         Behavior on x {NumberAnimation {duration: 200}}
@@ -127,7 +127,7 @@ Item{
 
     Image{
         id: peopleIcon
-        source: "qrc:/fluent_person-16-filled.png"
+        source: "qrc:/image/fluent_person-16-filled.png"
         x: 23 + 130
         y: 75 + 110
         Behavior on x {NumberAnimation {duration: 200}}
@@ -148,7 +148,7 @@ Item{
 
     Image{
         id: path
-        source: "qrc:/path.png"
+        source: "qrc:/image/path.png"
         x: 19
         y: 227
         width: 311
@@ -183,27 +183,27 @@ Item{
             CarruselElementTemplate{
                 id: firstPage
                 text: "El móvil a algunos les dirá un substantivo.\nEsos serán los que saben"
-                image: "qrc:/Group 56.png"
+                image: "qrc:/image/Group 56.png"
             }
             CarruselElementTemplate {
                 id: secondPage
                 text: "El móvil a algunos les dirá un substantivo.\nEsos serán los que saben"
-                image: "qrc:/Group 56.png"
+                image: "qrc:/image/Group 56.png"
             }
             CarruselElementTemplate {
                 id: thirdPage
                 text: "El móvil a algunos les dirá un substantivo.\nEsos serán los que saben"
-                image: "qrc:/Group 56.png"
+                image: "qrc:/image/Group 56.png"
             }
             CarruselElementTemplate {
                 id: fourthPage
                 text: "El móvil a algunos les dirá un substantivo.\nEsos serán los que saben"
-                image: "qrc:/Group 56.png"
+                image: "qrc:/image/Group 56.png"
             }
             CarruselElementTemplate {
                 id: fifthPage
                 text: "El móvil a algunos les dirá un substantivo.\nEsos serán los que saben"
-                image: "qrc:/Group 56.png"
+                image: "qrc:/image/Group 56.png"
             }
         }
 
@@ -234,7 +234,7 @@ Item{
 
     Image{
         id: play
-        source: "qrc:/play.png"
+        source: "qrc:/image/play.png"
         x: 100
         y: 663
         z: 1

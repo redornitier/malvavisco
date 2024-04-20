@@ -31,7 +31,7 @@ Item {
 
     Image{
         id: group57
-        source: "qrc:/Group 57.png"
+        source: "qrc:/image/Group 57.png"
         x: 20
         y: 153
         Behavior on opacity {NumberAnimation {duration: 200}}
@@ -39,7 +39,7 @@ Item {
 
     Image{
         id: financiacion
-        source: "qrc:/financiacion.png"
+        source: "qrc:/image/financiacion.png"
         x: 258
         y: 32
         Behavior on opacity {NumberAnimation {duration: 200}}
@@ -47,7 +47,7 @@ Item {
 
     Image{
         id: back
-        source: "qrc:/back.png"
+        source: "qrc:/image/back.png"
         x: 14
         y: 40
         Behavior on opacity {NumberAnimation {duration: 200}}

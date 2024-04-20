@@ -1,30 +1,23 @@
 <RCC>
     <qresource prefix="/">
-        <file>barrywhite.jpg</file>
-        <file>lobo-como-oveja.jpg</file>
-        <file>charades.jpg</file>
-        <file>grid.png</file>
-        <file>grid2.png</file>
-        <file>gamebig.png</file>
-        <file>gamesmall.png</file>
-        <file>filtro.png</file>
-        <file>financiacion.png</file>
-        <file>Group 12.png</file>
-        <file>Group 57.png</file>
-        <file>MALVAVIS.CO..png</file>
-        <file>games.png</file>
-        <file>back.png</file>
-        <file>play.png</file>
-        <file>tabler_clock-filled.png</file>
-        <file>fluent_person-16-filled.png</file>
-        <file>Property 1=level_1.png</file>
-        <file>Property 1=level_2.png</file>
-        <file>Property 1=level_3.png</file>
-        <file>Property 1=level_4.png</file>
-        <file>Property 1=level_5.png</file>
-        <file>Property 1=Default.png</file>
-        <file>favourite_indicator.png</file>
-        <file>path.png</file>
-        <file>Group 56.png</file>
+        <file>image/filtro.png</file>
+        <file>image/financiacion.png</file>
+        <file>image/Group 12.png</file>
+        <file>image/Group 57.png</file>
+        <file>image/MALVAVIS.CO..png</file>
+        <file>image/games.png</file>
+        <file>image/back.png</file>
+        <file>image/play.png</file>
+        <file>image/tabler_clock-filled.png</file>
+        <file>image/fluent_person-16-filled.png</file>
+        <file>image/Property 1=level_1.png</file>
+        <file>image/Property 1=level_2.png</file>
+        <file>image/Property 1=level_3.png</file>
+        <file>image/Property 1=level_4.png</file>
+        <file>image/Property 1=level_5.png</file>
+        <file>image/Property 1=Default.png</file>
+        <file>image/favourite_indicator.png</file>
+        <file>image/path.png</file>
+        <file>image/Group 56.png</file>
     </qresource>
 </RCC>

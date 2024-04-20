@@ -1,5 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>palabras.sqlite</file>
+        <file>db/palabras.sqlite</file>
     </qresource>
 </RCC>
