@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QQmlEngine>
+class BlancoModel;
 
 class BlancoController : public QObject
 {
@@ -50,7 +51,10 @@ public:
     uchar getGameEstimatedDuration() const;
     void setGameEstimatedDuration(uchar newGameEstimatedDuration);
 
+    void setModel(BlancoModel *blancoModel);
+
 private:
+    BlancoModel *mBlancoModel;
     // GameDefinition
     QString gameName{"Blanco"};
     QString gameSimpleDescription{"Descripción simple"};

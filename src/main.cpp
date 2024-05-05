@@ -3,6 +3,7 @@
 #include <QQmlEngine>
 #include <QQmlContext>
 #include "model/blancomodel.h"
+#include "controller/blancocontroller.h"
 
 int main(int argc, char *argv[])
 {
@@ -14,9 +15,12 @@ int main(int argc, char *argv[])
 
     BlancoModel* blancoModel = new BlancoModel();
     blancoModel->init(":/json/blancoStatic.json");
+    BlancoController *blancoController = new BlancoController();
+    blancoController->setModel(blancoModel);
 
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("BlancoModel", blancoModel);
+    engine.rootContext()->setContextProperty("BlancoController", blancoController);
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
                      &app, [url](QObject *obj, const QUrl &objUrl) {

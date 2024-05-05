@@ -2,8 +2,9 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>Common.qml</file>
-        <file>TestGameBox.qml</file>
-        <file>TestGameCard.qml</file>
+        <file>GamesBox.qml</file>
+        <file>Game.qml</file>
         <file>CarruselElementTemplate.qml</file>
+        <file>BlancoPage.qml</file>
     </qresource>
 </RCC>

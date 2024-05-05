@@ -209,3 +209,8 @@ void BlancoController::setGameEstimatedDuration(uchar newGameEstimatedDuration)
     gameEstimatedDuration = newGameEstimatedDuration;
     emit gameEstimatedDurationChanged();
 }
+
+void BlancoController::setModel(BlancoModel *blancoModel)
+{
+    mBlancoModel = blancoModel;
+}

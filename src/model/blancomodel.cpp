@@ -54,3 +54,9 @@ void BlancoModel::init(QString path)
         mDescription.append(pair);
     }
 }
+
+void BlancoModel::addPlayer(QString playerName)
+{
+    mPlayers.append(playerName);
+    qDebug()<<mPlayers;
+}

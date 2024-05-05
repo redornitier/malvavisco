@@ -146,7 +146,11 @@ Item{
         y: 227
         width: 311
         height: 8
+        transformOrigin: Item.TopLeft
         Behavior on opacity {NumberAnimation {duration: 200}}
+        Behavior on x {NumberAnimation {duration: 200}}
+        Behavior on y {NumberAnimation {duration: 200}}
+        Behavior on scale {NumberAnimation {duration: 200}}
     }
 
     MouseArea{
@@ -252,6 +256,14 @@ Item{
                 root.state = "big"
             }
         }
+    }
+
+    BlancoPage{ // hay que parametrizar qué juego se carga
+        id: gamePage
+        width: parent.width
+        height: parent.height
+        opacity: 0
+        Behavior on opacity {NumberAnimation {duration: 200}}
     }
 
     state: "small"
@@ -367,6 +379,12 @@ Item{
                 y: 40
             }
             PropertyChanges {
+                target: path
+                scale: 0.53
+                x: 112
+                y: 107
+            }
+            PropertyChanges {
                 target: type
                 x: 150
                 y: 71
@@ -394,6 +412,10 @@ Item{
             PropertyChanges {
                 target: peopleText
                 opacity: 0
+            }
+            PropertyChanges {
+                target: gamePage
+                opacity: 1
             }
         }
 

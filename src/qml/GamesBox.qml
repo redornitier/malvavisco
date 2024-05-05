@@ -62,7 +62,7 @@ Item {
         z: (root.state === "gameselected") ? 2 : 0
     }
 
-    TestGameCard{
+    Game{
         id: blanco
         x: 58
         y: 215
@@ -83,7 +83,7 @@ Item {
         }
     }
 
-    TestGameCard{
+    Game{
         id: lobos
         x: 58
         y: 475

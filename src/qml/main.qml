@@ -14,5 +14,5 @@ Window {
     FontLoader {id: jua; source: "qrc:/fonts/Jua-Regular.ttf"}
     FontLoader {id: hind; source: "qrc:/fonts/Hind-Regular.ttf"}
 
-    TestGameBox{}
+    GamesBox{}
 }
