@@ -2,8 +2,6 @@ import QtQuick 2.15
 
 Item {
     id: root
-    width: 390
-    height: 844
 
     Rectangle{anchors.fill: parent; color: "#eeeeee"}
 

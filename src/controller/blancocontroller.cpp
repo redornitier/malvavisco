@@ -16,10 +16,10 @@ BlancoController::BlancoController(QObject *parent)
 }
 
 void BlancoController::calculateWord()
-{/*
+{
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
     db.setHostName("localhost");
-    QFile file(":/palabras.sqlite");
+    QFile file(":/db/palabras.sqlite");
     QString wordsDbPath;
     if (file.exists()) {
         wordsDbPath = QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation);
@@ -32,19 +32,19 @@ void BlancoController::calculateWord()
             qDebug() << "Could not obtain writable location.";
             return;
         }
-        wordsDbPath.append("/db/palabras.db");
+        wordsDbPath.append("palabras.db");
         file.copy(wordsDbPath) ;
         QFile::setPermissions(wordsDbPath ,QFile::WriteOwner | QFile::ReadOwner) ;
     } else qDebug() << "the file does not exist" ;
 
     db.setDatabaseName(wordsDbPath);
-    db.open();
+    qDebug() << "DB OPEN:" << db.open();
 
     QSqlQuery query("SELECT palabra FROM palabras WHERE palabra_id = ?", db);
     query.bindValue(0, QRandomGenerator::global()->bounded(1, 55092));
     query.exec();
     query.first();
-    currentWord = query.value(0).toString();*/
+    mCurrentWord = query.value(0).toString();
 }
 
 void BlancoController::distributePlayers()
@@ -105,13 +105,8 @@ void BlancoController::setModel(BlancoModel *blancoModel)
 
 void BlancoController::nextButtonClick()
 {
-    if(mBlancoModel->blancoState() == "AddPlayers"){
-        mBlancoModel->setPlayers(mTemporalPlayers);
-        mBlancoModel->setBlancoState("Settings");
-    }else if(mBlancoModel->blancoState() == "Settings")
-        mBlancoModel->setBlancoState("WordAssign");
-    else if(mBlancoModel->blancoState() == "WordAssign")
-        mBlancoModel->setBlancoState("");
+    this->changeBlancoState();
+    this->checkButtonAppearance();
 }
 
 void BlancoController::changePlayerNameByIndex(int index, QString value)
@@ -127,4 +122,57 @@ void BlancoController::removePlayerByIndex(int index)
 void BlancoController::addPlayerIndex()
 {
     mTemporalPlayers.append("");
+}
+
+void BlancoController::changeBlancoState()
+{
+    if(mBlancoModel->blancoState() == "AddPlayers"){
+        mBlancoModel->setPlayers(mTemporalPlayers);
+        this->calculateWord();
+        this->createWordList();
+        mBlancoModel->setBlancoState("Settings");
+    }else if(mBlancoModel->blancoState() == "Settings")
+        mBlancoModel->setBlancoState("WordAssign");
+    else if(mBlancoModel->blancoState() == "WordAssign"){
+        if(mBlancoModel->wordAssignState() == "player"){
+            mBlancoModel->setWordAssignState("word");
+        }else if(mBlancoModel->wordAssignState() == "word"){
+            if(mBlancoModel->wordAndPlayerIt() == mBlancoModel->players().length()-1){
+                mBlancoModel->setBlancoState("next");
+            }else{
+                mBlancoModel->setWordAssignState("player");
+                mBlancoModel->setWordAndPlayerIt(mBlancoModel->wordAndPlayerIt()+1);
+            }
+        }
+    }
+}
+
+void BlancoController::checkButtonAppearance()
+{
+    if(mBlancoModel->blancoState() == "AddPlayers"){
+        mBlancoModel->setNextButtonColor(0x6E75CB);
+        mBlancoModel->setNextButtonTextValue("Siguiente");
+    }else if(mBlancoModel->blancoState() == "Settings"){
+        mBlancoModel->setNextButtonColor(0x6E75CB);
+        mBlancoModel->setNextButtonTextValue("Siguiente");
+    }else if(mBlancoModel->blancoState() == "WordAssign"){
+        if(mBlancoModel->wordAssignState() == "player"){
+            mBlancoModel->setNextButtonColor(0xFF83A1);
+            mBlancoModel->setNextButtonTextValue("I'm alone");
+        }else if(mBlancoModel->wordAssignState() == "word"){
+            mBlancoModel->setNextButtonColor(0x6E75CB);
+            mBlancoModel->setNextButtonTextValue("Siguiente");
+        }
+    }
+}
+
+void BlancoController::createWordList()
+{
+    for (int i = 0; i < mBlancoModel->players().length()-1; ++i)
+        mTemporalWordList.append(mCurrentWord);
+
+    int randomIndex = QRandomGenerator::global()->bounded(mBlancoModel->players().length()-1);
+    mTemporalWordList[randomIndex] = "Blanco";
+
+    mBlancoModel->setWordList(mTemporalWordList);
 }

@@ -24,9 +24,15 @@ public:
     Q_INVOKABLE void changePlayerNameByIndex(int index, QString value);
     Q_INVOKABLE void removePlayerByIndex(int index);
     Q_INVOKABLE void addPlayerIndex();
+
 private:
     BlancoModel *mBlancoModel;
     QStringList mTemporalPlayers{""};
+    QStringList mTemporalWordList{""};
+    QString mCurrentWord{""};
+    void changeBlancoState();
+    void checkButtonAppearance();
+    void createWordList();
 
 };
 

@@ -81,10 +81,67 @@ void BlancoModel::setBlancoState(const QString &newBlancoState)
     emit blancoStateChanged();
 }
 
-
-
-void BlancoModel::addPlayer(QString playerName)
+QString BlancoModel::nextButtonTextValue() const
 {
-    mPlayers.append(playerName);
-    qDebug()<<mPlayers;
+    return mNextButtonTextValue;
+}
+
+void BlancoModel::setNextButtonTextValue(const QString &newNextButtonTextValue)
+{
+    if (mNextButtonTextValue == newNextButtonTextValue)
+        return;
+    mNextButtonTextValue = newNextButtonTextValue;
+    emit nextButtonTextValueChanged();
+}
+
+QColor BlancoModel::nextButtonColor() const
+{
+    return mNextButtonColor;
+}
+
+void BlancoModel::setNextButtonColor(const QColor &newNextButtonColor)
+{
+    if (mNextButtonColor == newNextButtonColor)
+        return;
+    mNextButtonColor = newNextButtonColor;
+    emit nextButtonColorChanged();
+}
+
+QString BlancoModel::wordAssignState() const
+{
+    return mWordAssignState;
+}
+
+void BlancoModel::setWordAssignState(const QString &newWordAssignState)
+{
+    if (mWordAssignState == newWordAssignState)
+        return;
+    mWordAssignState = newWordAssignState;
+    emit wordAssignStateChanged();
+}
+
+int BlancoModel::wordAndPlayerIt() const
+{
+    return mWordAndPlayerIt;
+}
+
+void BlancoModel::setWordAndPlayerIt(int newWordAndPlayerIt)
+{
+    if (mWordAndPlayerIt == newWordAndPlayerIt)
+        return;
+    mWordAndPlayerIt = newWordAndPlayerIt;
+    emit wordAndPlayerItChanged();
+}
+
+QStringList BlancoModel::wordList() const
+{
+    return mWordList;
+}
+
+void BlancoModel::setWordList(const QStringList &newWordList)
+{
+    if (mWordList == newWordList)
+        return;
+    mWordList = newWordList;
+    emit wordListChanged();
 }

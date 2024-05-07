@@ -17,27 +17,12 @@ Item {
         opacity: 0
     }
 
-    Rectangle{
+    Blanco_NextButton{
         id: nextButton
         width: 153
         height: 50
         x: 119
         y: 752
-        radius: 41
-        color: "#6E75CB"
-        Text{
-            anchors.fill: parent
-            verticalAlignment: Text.AlignVCenter
-            horizontalAlignment: Text.AlignHCenter
-            text: "SIGUIENTE"
-            color: "#F9F8FF"
-            font.family: hind.name
-            font.pixelSize: 16
-        }
-        MouseArea{
-            anchors.fill: parent
-            onClicked: BlancoController.nextButtonClick()
-        }
     }
 
     state: BlancoModel.blancoState
