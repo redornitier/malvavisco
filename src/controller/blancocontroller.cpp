@@ -7,6 +7,7 @@
 #include <QtMath>
 #include <algorithm>
 #include <random>
+#include "../model/blancomodel.h"
 
 BlancoController::BlancoController(QObject *parent)
     : QObject{parent}
@@ -15,7 +16,7 @@ BlancoController::BlancoController(QObject *parent)
 }
 
 void BlancoController::calculateWord()
-{
+{/*
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
     db.setHostName("localhost");
     QFile file(":/palabras.sqlite");
@@ -43,11 +44,11 @@ void BlancoController::calculateWord()
     query.bindValue(0, QRandomGenerator::global()->bounded(1, 55092));
     query.exec();
     query.first();
-    currentWord = query.value(0).toString();
+    currentWord = query.value(0).toString();*/
 }
 
 void BlancoController::distributePlayers()
-{
+{/*
     QList<QString> playersAux{players};
     blancoPlayers.clear();
     wordPlayers.clear();
@@ -61,21 +62,21 @@ void BlancoController::distributePlayers()
     wordPlayers = playersAux;
 
     qDebug()<<"word players " << wordPlayers;
-    qDebug()<<"blanco players " << blancoPlayers;
+    qDebug()<<"blanco players " << blancoPlayers;*/
 }
 
 void BlancoController::shufflePlayers()
-{
+{/*
     shuffledPlayers = players;
 
     std::random_device rd;
     std::mt19937 g(rd());
     std::shuffle(shuffledPlayers.begin(), shuffledPlayers.end(), g);
-    qDebug()<<"shuffled players " << shuffledPlayers;
+    qDebug()<<"shuffled players " << shuffledPlayers;*/
 }
 
 void BlancoController::calculateCurrentPlayerAndWord()
-{
+{/*
     if(currentIndex >= shuffledPlayers.size()){
 //        root.ended = true
         return;
@@ -94,123 +95,36 @@ void BlancoController::calculateCurrentPlayerAndWord()
 
     qDebug()<<"Current player " << currentPlayer << " with word " << currentPlayerWord;
 
-    currentIndex++;
-}
-
-void BlancoController::setPlayers(const QList<QString> &newPlayers)
-{
-    qDebug()<<"players " << newPlayers;
-    if (players == newPlayers)
-        return;
-    players = newPlayers;
-    emit playersChanged();
-}
-
-QString BlancoController::getCurrentPlayerWord() const
-{
-    return currentPlayerWord;
-}
-
-void BlancoController::setCurrentPlayerWord(const QString &newCurrentPlayerWord)
-{
-    if (currentPlayerWord == newCurrentPlayerWord)
-        return;
-    currentPlayerWord = newCurrentPlayerWord;
-    emit currentPlayerWordChanged();
-}
-
-QString BlancoController::getCurrentPlayer() const
-{
-    return currentPlayer;
-}
-
-void BlancoController::setCurrentPlayer(const QString &newCurrentPlayer)
-{
-    if (currentPlayer == newCurrentPlayer)
-        return;
-    currentPlayer = newCurrentPlayer;
-    emit currentPlayerChanged();
-}
-
-QString BlancoController::getGameName() const
-{
-    return gameName;
-}
-
-void BlancoController::setGameName(const QString &newGameName)
-{
-    if (gameName == newGameName)
-        return;
-    gameName = newGameName;
-    emit gameNameChanged();
-}
-
-QString BlancoController::getGameSimpleDescription() const
-{
-    return gameSimpleDescription;
-}
-
-void BlancoController::setGameSimpleDescription(const QString &newGameSimpleDescription)
-{
-    if (gameSimpleDescription == newGameSimpleDescription)
-        return;
-    gameSimpleDescription = newGameSimpleDescription;
-    emit gameSimpleDescriptionChanged();
-}
-
-QString BlancoController::getGameDetailedDescription() const
-{
-    return gameDetailedDescription;
-}
-
-void BlancoController::setGameDetailedDescription(const QString &newGameDetailedDescription)
-{
-    if (gameDetailedDescription == newGameDetailedDescription)
-        return;
-    gameDetailedDescription = newGameDetailedDescription;
-    emit gameDetailedDescriptionChanged();
-}
-
-uchar BlancoController::getGameMinPlayers() const
-{
-    return gameMinPlayers;
-}
-
-void BlancoController::setGameMinPlayers(uchar newGameMinPlayers)
-{
-    if (gameMinPlayers == newGameMinPlayers)
-        return;
-    gameMinPlayers = newGameMinPlayers;
-    emit gameMinPlayersChanged();
-}
-
-uchar BlancoController::getGameMaxPlayers() const
-{
-    return gameMaxPlayers;
-}
-
-void BlancoController::setGameMaxPlayers(uchar newGameMaxPlayers)
-{
-    if (gameMaxPlayers == newGameMaxPlayers)
-        return;
-    gameMaxPlayers = newGameMaxPlayers;
-    emit gameMaxPlayersChanged();
-}
-
-uchar BlancoController::getGameEstimatedDuration() const
-{
-    return gameEstimatedDuration;
-}
-
-void BlancoController::setGameEstimatedDuration(uchar newGameEstimatedDuration)
-{
-    if (gameEstimatedDuration == newGameEstimatedDuration)
-        return;
-    gameEstimatedDuration = newGameEstimatedDuration;
-    emit gameEstimatedDurationChanged();
+    currentIndex++;*/
 }
 
 void BlancoController::setModel(BlancoModel *blancoModel)
 {
     mBlancoModel = blancoModel;
+}
+
+void BlancoController::nextButtonClick()
+{
+    if(mBlancoModel->blancoState() == "AddPlayers"){
+        mBlancoModel->setPlayers(mTemporalPlayers);
+        mBlancoModel->setBlancoState("Settings");
+    }else if(mBlancoModel->blancoState() == "Settings")
+        mBlancoModel->setBlancoState("WordAssign");
+    else if(mBlancoModel->blancoState() == "WordAssign")
+        mBlancoModel->setBlancoState("");
+}
+
+void BlancoController::changePlayerNameByIndex(int index, QString value)
+{
+    mTemporalPlayers.replace(index, value);
+}
+
+void BlancoController::removePlayerByIndex(int index)
+{
+    mTemporalPlayers.removeAt(index);
+}
+
+void BlancoController::addPlayerIndex()
+{
+    mTemporalPlayers.append("");
 }

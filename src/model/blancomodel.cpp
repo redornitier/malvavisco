@@ -55,6 +55,34 @@ void BlancoModel::init(QString path)
     }
 }
 
+QStringList BlancoModel::players()
+{
+    return mPlayers;
+}
+
+void BlancoModel::setPlayers(const QStringList &newPlayers)
+{
+    if (mPlayers == newPlayers)
+        return;
+    mPlayers = newPlayers;
+    emit playersChanged();
+}
+
+QString BlancoModel::blancoState() const
+{
+    return mBlancoState;
+}
+
+void BlancoModel::setBlancoState(const QString &newBlancoState)
+{
+    if (mBlancoState == newBlancoState)
+        return;
+    mBlancoState = newBlancoState;
+    emit blancoStateChanged();
+}
+
+
+
 void BlancoModel::addPlayer(QString playerName)
 {
     mPlayers.append(playerName);

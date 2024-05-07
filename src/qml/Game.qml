@@ -1,6 +1,7 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtGraphicalEffects 1.15
+import "blanco"
 
 Item{
     // propiedades dinamicas
@@ -258,7 +259,7 @@ Item{
         }
     }
 
-    BlancoPage{ // hay que parametrizar qué juego se carga
+    Blanco_Page{ // hay que parametrizar qué juego se carga
         id: gamePage
         width: parent.width
         height: parent.height

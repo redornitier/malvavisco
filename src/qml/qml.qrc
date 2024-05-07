@@ -5,6 +5,9 @@
         <file>GamesBox.qml</file>
         <file>Game.qml</file>
         <file>CarruselElementTemplate.qml</file>
-        <file>BlancoPage.qml</file>
+        <file>blanco/Blanco_Page.qml</file>
+        <file>blanco/Blanco_AddPlayers.qml</file>
+        <file>blanco/Blanco_Settings.qml</file>
+        <file>blanco/Blanco_WordAssign.qml</file>
     </qresource>
 </RCC>

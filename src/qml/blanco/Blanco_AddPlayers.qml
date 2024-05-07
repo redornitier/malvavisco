@@ -1,6 +1,8 @@
 import QtQuick 2.15
 
 Item {
+    anchors.fill: parent
+    property alias playerListModel: listModel
 
     Text{
         width: 250
@@ -15,8 +17,8 @@ Item {
     }
 
     ListModel {
-         id: listModel
-         ListElement{playerName: ""}
+        id: listModel
+        ListElement{playerName: ""}
     }
 
     ListView{
@@ -41,16 +43,11 @@ Item {
                 anchors.leftMargin: 15
                 text: "asd"
                 maximumLength: 15
-                onTextChanged: playerName = text
+                onTextChanged: BlancoController.changePlayerNameByIndex(index, text)
                 verticalAlignment: TextInput.AlignVCenter
                 font.pixelSize: 16
                 font.family: hind.name
                 font.bold: true
-                Rectangle{
-                    anchors.fill: parent
-                    color: "red"
-                    opacity: 0
-                }
             }
             Text{
                 x: 200
@@ -64,12 +61,10 @@ Item {
                 color: "#223784"
                 MouseArea{
                     anchors.fill: parent
-                    onClicked: listModel.remove(index)
-                }
-                Rectangle{
-                    anchors.fill: parent
-                    color: "green"
-                    opacity: 0
+                    onClicked:{
+                        BlancoController.removePlayerByIndex(index)
+                        listModel.remove(index)
+                    }
                 }
             }
         }
@@ -81,21 +76,9 @@ Item {
         y: 406 + 202
         MouseArea{
             anchors.fill: parent
-            onClicked: listModel.append({playerName: ""})
-        }
-    }
-
-    Rectangle{
-        width: 50
-        height: 50
-        color: "red"
-        x: 150
-        y: 700
-        MouseArea{
-            anchors.fill: parent
-            onClicked: {                
-                for(var i = 0; i < listModel.count; i++)
-                    BlancoModel.addPlayer(listModel.get(i).playerName);
+            onClicked: {
+                listModel.append({playerName: ""})
+                BlancoController.addPlayerIndex()
             }
         }
     }
