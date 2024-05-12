@@ -158,3 +158,16 @@ void BlancoModel::setWordCallingState(const QString &newWordCallingState)
     mWordCallingState = newWordCallingState;
     emit wordCallingStateChanged();
 }
+
+QString BlancoModel::debateState() const
+{
+    return mDebateState;
+}
+
+void BlancoModel::setDebateState(const QString &newDebateState)
+{
+    if (mDebateState == newDebateState)
+        return;
+    mDebateState = newDebateState;
+    emit debateStateChanged();
+}

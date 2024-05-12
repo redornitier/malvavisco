@@ -150,9 +150,9 @@ void BlancoController::changeBlancoState()
         else if(mBlancoModel->wordCallingState() == "calling")
             mBlancoModel->setBlancoState("Debate");
     }else if(mBlancoModel->blancoState() == "Debate"){
-        if(mBlancoModel->wordCallingState() == "preparation")
-            mBlancoModel->setWordCallingState("calling");
-        else if(mBlancoModel->wordCallingState() == "calling")
+        if(mBlancoModel->debateState() == "countdown")
+            mBlancoModel->setDebateState("voting");
+        else if(mBlancoModel->debateState() == "voting")
             mBlancoModel->setBlancoState("End");
     }
 }

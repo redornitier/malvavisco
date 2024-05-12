@@ -38,6 +38,9 @@ public:
     QString wordCallingState() const;
     void setWordCallingState(const QString &newWordCallingState);
 
+    QString debateState() const;
+    void setDebateState(const QString &newDebateState);
+
 private:
     QStringList mPlayers{""};
     QStringList mWordList{""};
@@ -46,6 +49,7 @@ private:
     QColor mNextButtonColor{"#000000"};
     QString mWordAssignState{"player"};
     QString mWordCallingState{"preparation"};
+    QString mDebateState{"countdown"};
     int mWordAndPlayerIt{0};
 
     Q_PROPERTY(QStringList players READ players WRITE setPlayers NOTIFY playersChanged FINAL)
@@ -56,6 +60,7 @@ private:
     Q_PROPERTY(int wordAndPlayerIt READ wordAndPlayerIt WRITE setWordAndPlayerIt NOTIFY wordAndPlayerItChanged FINAL)
     Q_PROPERTY(QStringList wordList READ wordList WRITE setWordList NOTIFY wordListChanged FINAL)
     Q_PROPERTY(QString wordCallingState READ wordCallingState WRITE setWordCallingState NOTIFY wordCallingStateChanged FINAL)
+    Q_PROPERTY(QString debateState READ debateState WRITE setDebateState NOTIFY debateStateChanged FINAL)
 
 signals:
     void playersChanged();
@@ -66,6 +71,7 @@ signals:
     void wordAndPlayerItChanged();
     void wordListChanged();
     void wordCallingStateChanged();
+    void debateStateChanged();
 };
 
 #endif // BLANCOMODEL_H

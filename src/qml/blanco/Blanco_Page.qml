@@ -22,6 +22,16 @@ Item {
         opacity: 0
     }
 
+    Blanco_Debate{
+        id: debate
+        opacity: 0
+    }
+
+    Blanco_End{
+        id: end
+        opacity: 0
+    }
+
     Blanco_NextButton{
         id: nextButton
         width: 153
@@ -57,6 +67,20 @@ Item {
             name: "WordCalling"
             PropertyChanges {
                 target: wordCalling
+                opacity: 1
+            }
+        },
+        State {
+            name: "Debate"
+            PropertyChanges {
+                target: debate
+                opacity: 1
+            }
+        },
+        State {
+            name: "End"
+            PropertyChanges {
+                target: end
                 opacity: 1
             }
         }
