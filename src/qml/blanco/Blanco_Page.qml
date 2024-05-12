@@ -17,6 +17,11 @@ Item {
         opacity: 0
     }
 
+    Blanco_WordCalling{
+        id: wordCalling
+        opacity: 0
+    }
+
     Blanco_NextButton{
         id: nextButton
         width: 153
@@ -45,6 +50,13 @@ Item {
             name: "WordAssign"
             PropertyChanges {
                 target: wordAssing
+                opacity: 1
+            }
+        },
+        State {
+            name: "WordCalling"
+            PropertyChanges {
+                target: wordCalling
                 opacity: 1
             }
         }

@@ -10,5 +10,8 @@
         <file>blanco/Blanco_Settings.qml</file>
         <file>blanco/Blanco_WordAssign.qml</file>
         <file>blanco/Blanco_NextButton.qml</file>
+        <file>blanco/Blanco_WordCalling.qml</file>
+        <file>blanco/Blanco_Debate.qml</file>
+        <file>blanco/Blanco_End.qml</file>
     </qresource>
 </RCC>

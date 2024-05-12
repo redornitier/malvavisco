@@ -35,6 +35,9 @@ public:
     QStringList wordList() const;
     void setWordList(const QStringList &newWordList);
 
+    QString wordCallingState() const;
+    void setWordCallingState(const QString &newWordCallingState);
+
 private:
     QStringList mPlayers{""};
     QStringList mWordList{""};
@@ -42,6 +45,7 @@ private:
     QString mNextButtonTextValue{"lorem"};
     QColor mNextButtonColor{"#000000"};
     QString mWordAssignState{"player"};
+    QString mWordCallingState{"preparation"};
     int mWordAndPlayerIt{0};
 
     Q_PROPERTY(QStringList players READ players WRITE setPlayers NOTIFY playersChanged FINAL)
@@ -51,6 +55,7 @@ private:
     Q_PROPERTY(QString wordAssignState READ wordAssignState WRITE setWordAssignState NOTIFY wordAssignStateChanged FINAL)
     Q_PROPERTY(int wordAndPlayerIt READ wordAndPlayerIt WRITE setWordAndPlayerIt NOTIFY wordAndPlayerItChanged FINAL)
     Q_PROPERTY(QStringList wordList READ wordList WRITE setWordList NOTIFY wordListChanged FINAL)
+    Q_PROPERTY(QString wordCallingState READ wordCallingState WRITE setWordCallingState NOTIFY wordCallingStateChanged FINAL)
 
 signals:
     void playersChanged();
@@ -60,6 +65,7 @@ signals:
     void wordAssignStateChanged();
     void wordAndPlayerItChanged();
     void wordListChanged();
+    void wordCallingStateChanged();
 };
 
 #endif // BLANCOMODEL_H

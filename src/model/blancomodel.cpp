@@ -145,3 +145,16 @@ void BlancoModel::setWordList(const QStringList &newWordList)
     mWordList = newWordList;
     emit wordListChanged();
 }
+
+QString BlancoModel::wordCallingState() const
+{
+    return mWordCallingState;
+}
+
+void BlancoModel::setWordCallingState(const QString &newWordCallingState)
+{
+    if (mWordCallingState == newWordCallingState)
+        return;
+    mWordCallingState = newWordCallingState;
+    emit wordCallingStateChanged();
+}

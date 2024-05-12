@@ -138,12 +138,22 @@ void BlancoController::changeBlancoState()
             mBlancoModel->setWordAssignState("word");
         }else if(mBlancoModel->wordAssignState() == "word"){
             if(mBlancoModel->wordAndPlayerIt() == mBlancoModel->players().length()-1){
-                mBlancoModel->setBlancoState("next");
+                mBlancoModel->setBlancoState("WordCalling");
             }else{
                 mBlancoModel->setWordAssignState("player");
                 mBlancoModel->setWordAndPlayerIt(mBlancoModel->wordAndPlayerIt()+1);
             }
         }
+    }else if(mBlancoModel->blancoState() == "WordCalling"){
+        if(mBlancoModel->wordCallingState() == "preparation")
+            mBlancoModel->setWordCallingState("calling");
+        else if(mBlancoModel->wordCallingState() == "calling")
+            mBlancoModel->setBlancoState("Debate");
+    }else if(mBlancoModel->blancoState() == "Debate"){
+        if(mBlancoModel->wordCallingState() == "preparation")
+            mBlancoModel->setWordCallingState("calling");
+        else if(mBlancoModel->wordCallingState() == "calling")
+            mBlancoModel->setBlancoState("End");
     }
 }
 
