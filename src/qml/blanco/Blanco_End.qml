@@ -7,7 +7,7 @@ Item {
         font.pixelSize: 32
         font.family: hind.name
         font.bold: true
-        text: "TYPE HERE"
+        text: BlancoModel.players[BlancoModel.debateIndexPressed]
         x: 123
         y: 183
         width: 114
@@ -20,4 +20,14 @@ Item {
         y: 240
         source: "qrc:/image/blanco/Rectangle 23.png"
     }
+
+    states:[
+    State{
+            name: "win"
+        },
+        State{
+            name: "repeat"
+        }
+
+    ]
 }

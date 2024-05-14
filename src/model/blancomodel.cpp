@@ -171,3 +171,16 @@ void BlancoModel::setDebateState(const QString &newDebateState)
     mDebateState = newDebateState;
     emit debateStateChanged();
 }
+
+int BlancoModel::debateIndexPressed() const
+{
+    return mDebateIndexPressed;
+}
+
+void BlancoModel::setDebateIndexPressed(int newDebateIndexPressed)
+{
+    if (mDebateIndexPressed == newDebateIndexPressed)
+        return;
+    mDebateIndexPressed = newDebateIndexPressed;
+    emit debateIndexPressedChanged();
+}

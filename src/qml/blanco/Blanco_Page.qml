@@ -25,6 +25,7 @@ Item {
     Blanco_Debate{
         id: debate
         opacity: 0
+        enabled: false
     }
 
     Blanco_End{
@@ -75,6 +76,7 @@ Item {
             PropertyChanges {
                 target: debate
                 opacity: 1
+                enabled: true
             }
         },
         State {

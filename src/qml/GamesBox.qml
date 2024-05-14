@@ -81,24 +81,24 @@ Item {
         }
     }
 
-    Game{
-        id: lobos
-        x: 58
-        y: 475
-        name: "LOS LOBOS"
-        type: "Roles Ocultos"
-        time: 45
-        minPeople: 4
-        maxPeople: 15
-        difficulty: 2
-        onStateChanged: {
-            if(state === "medium" || state === "big"){
-                root.state = "gameselected"
-            }else{
-                root.state = "default"
-            }
-        }
-    }
+    // Game{
+    //     id: lobos
+    //     x: 58
+    //     y: 475
+    //     name: "LOS LOBOS"
+    //     type: "Roles Ocultos"
+    //     time: 45
+    //     minPeople: 4
+    //     maxPeople: 15
+    //     difficulty: 2
+    //     onStateChanged: {
+    //         if(state === "medium" || state === "big"){
+    //             root.state = "gameselected"
+    //         }else{
+    //             root.state = "default"
+    //         }
+    //     }
+    // }
 
     states: [
         State {

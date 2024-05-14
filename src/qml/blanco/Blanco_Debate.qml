@@ -4,6 +4,15 @@ Item {
 
     state: BlancoModel.debateState
 
+
+    property string blancoState: BlancoModel.blancoState
+    onBlancoStateChanged:{
+        if(blancoState === "WordCalling"){
+            for (var i = 0; i < BlancoModel.players.length; i++)
+                listModel.append({playerName: BlancoModel.players[i]});
+        }
+    }
+
     Text{
         id: txtCountdownInstructions
         font.family: hind.name
@@ -49,6 +58,48 @@ Item {
         opacity: 0
     }
 
+
+
+    ListModel {
+        id: listModel
+    }
+
+    ListView{
+        id: listView
+        property int indexPressed: -1
+        opacity: 0
+        width: 237
+        height: 400
+        x: 77
+        y: 310
+        model: listModel
+        clip: true
+        spacing: 10
+        delegate: Rectangle{
+            id: listRoot
+            width: 237
+            height: 50
+            color: "transparent"
+            border.color: BlancoModel.debateIndexPressed == index ? "#6E75CB" : "transparent"
+            border.width: 4
+            radius: 41
+            Text{
+                anchors.fill: parent
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                text: model.playerName
+                font.family: hind.name
+                font.bold: true
+                font.pixelSize: 32
+                color: "#FF83A1"
+            }
+            MouseArea{
+                anchors.fill: parent
+                onClicked: BlancoModel.debateIndexPressed = index
+            }
+        }
+    }
+
     states:[
         State{
             name: "countdown"
@@ -58,6 +109,7 @@ Item {
         State{
             name: "voting"
             PropertyChanges{target: txtVotingInstructions; opacity: 1}
+            PropertyChanges{target: listView; opacity: 1}
         }
 
     ]

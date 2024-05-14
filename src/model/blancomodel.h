@@ -41,6 +41,9 @@ public:
     QString debateState() const;
     void setDebateState(const QString &newDebateState);
 
+    int debateIndexPressed() const;
+    void setDebateIndexPressed(int newDebateIndexPressed);
+
 private:
     QStringList mPlayers{""};
     QStringList mWordList{""};
@@ -51,6 +54,7 @@ private:
     QString mWordCallingState{"preparation"};
     QString mDebateState{"countdown"};
     int mWordAndPlayerIt{0};
+    int mDebateIndexPressed{-1};
 
     Q_PROPERTY(QStringList players READ players WRITE setPlayers NOTIFY playersChanged FINAL)
     Q_PROPERTY(QString blancoState READ blancoState WRITE setBlancoState NOTIFY blancoStateChanged FINAL)
@@ -62,6 +66,8 @@ private:
     Q_PROPERTY(QString wordCallingState READ wordCallingState WRITE setWordCallingState NOTIFY wordCallingStateChanged FINAL)
     Q_PROPERTY(QString debateState READ debateState WRITE setDebateState NOTIFY debateStateChanged FINAL)
 
+    Q_PROPERTY(int debateIndexPressed READ debateIndexPressed WRITE setDebateIndexPressed NOTIFY debateIndexPressedChanged FINAL)
+
 signals:
     void playersChanged();
     void blancoStateChanged();
@@ -72,6 +78,7 @@ signals:
     void wordListChanged();
     void wordCallingStateChanged();
     void debateStateChanged();
+    void debateIndexPressedChanged();
 };
 
 #endif // BLANCOMODEL_H
