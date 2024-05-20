@@ -44,6 +44,9 @@ public:
     int debateIndexPressed() const;
     void setDebateIndexPressed(int newDebateIndexPressed);
 
+    int numberOfBlancos() const;
+    void setNumberOfBlancos(int newNumberOfBlancos);
+
 private:
     QStringList mPlayers{""};
     QStringList mWordList{""};
@@ -55,6 +58,7 @@ private:
     QString mDebateState{"countdown"};
     int mWordAndPlayerIt{0};
     int mDebateIndexPressed{-1};
+    int mNumberOfBlancos{1};
 
     Q_PROPERTY(QStringList players READ players WRITE setPlayers NOTIFY playersChanged FINAL)
     Q_PROPERTY(QString blancoState READ blancoState WRITE setBlancoState NOTIFY blancoStateChanged FINAL)
@@ -65,8 +69,8 @@ private:
     Q_PROPERTY(QStringList wordList READ wordList WRITE setWordList NOTIFY wordListChanged FINAL)
     Q_PROPERTY(QString wordCallingState READ wordCallingState WRITE setWordCallingState NOTIFY wordCallingStateChanged FINAL)
     Q_PROPERTY(QString debateState READ debateState WRITE setDebateState NOTIFY debateStateChanged FINAL)
-
     Q_PROPERTY(int debateIndexPressed READ debateIndexPressed WRITE setDebateIndexPressed NOTIFY debateIndexPressedChanged FINAL)
+    Q_PROPERTY(int numberOfBlancos READ numberOfBlancos WRITE setNumberOfBlancos NOTIFY numberOfBlancosChanged FINAL)
 
 signals:
     void playersChanged();
@@ -79,6 +83,7 @@ signals:
     void wordCallingStateChanged();
     void debateStateChanged();
     void debateIndexPressedChanged();
+    void numberOfBlancosChanged();
 };
 
 #endif // BLANCOMODEL_H

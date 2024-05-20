@@ -118,7 +118,7 @@ Item {
         font.family: hind.name
         font.pixelSize: 32
         color: "#FF83A1"
-        text: BlancoModel.wordList[BlancoModel.wordAndPlayerIt]
+        text: BlancoModel.wordList[BlancoModel.wordAndPlayerIt] ? BlancoModel.wordList[BlancoModel.wordAndPlayerIt] : ""
         width: parent.width
         height: 51
         horizontalAlignment: Text.AlignHCenter

@@ -184,3 +184,16 @@ void BlancoModel::setDebateIndexPressed(int newDebateIndexPressed)
     mDebateIndexPressed = newDebateIndexPressed;
     emit debateIndexPressedChanged();
 }
+
+int BlancoModel::numberOfBlancos() const
+{
+    return mNumberOfBlancos;
+}
+
+void BlancoModel::setNumberOfBlancos(int newNumberOfBlancos)
+{
+    if (mNumberOfBlancos == newNumberOfBlancos)
+        return;
+    mNumberOfBlancos = newNumberOfBlancos;
+    emit numberOfBlancosChanged();
+}

@@ -129,7 +129,7 @@ void BlancoController::changeBlancoState()
     if(mBlancoModel->blancoState() == "AddPlayers"){
         mBlancoModel->setPlayers(mTemporalPlayers);
         this->calculateWord();
-        this->createWordList();
+        this->createWordList(mBlancoModel->numberOfBlancos());
         mBlancoModel->setBlancoState("Settings");
     }else if(mBlancoModel->blancoState() == "Settings")
         mBlancoModel->setBlancoState("WordAssign");
@@ -152,8 +152,10 @@ void BlancoController::changeBlancoState()
     }else if(mBlancoModel->blancoState() == "Debate"){
         if(mBlancoModel->debateState() == "countdown")
             mBlancoModel->setDebateState("voting");
-        else if(mBlancoModel->debateState() == "voting")
+        else if(mBlancoModel->debateState() == "voting"){
+            this->resolve();
             mBlancoModel->setBlancoState("End");
+        }
     }
 }
 
@@ -176,13 +178,28 @@ void BlancoController::checkButtonAppearance()
     }
 }
 
-void BlancoController::createWordList()
+void BlancoController::createWordList(int numBlancos)
 {
-    for (int i = 0; i < mBlancoModel->players().length()-1; ++i)
+    mTemporalWordList.clear();
+
+    for (int i = 0; i < mBlancoModel->players().length(); ++i)
         mTemporalWordList.append(mCurrentWord);
 
-    int randomIndex = QRandomGenerator::global()->bounded(mBlancoModel->players().length()-1);
-    mTemporalWordList[randomIndex] = "Blanco";
+    QSet<int> uniqueIndices;
+
+    while (uniqueIndices.size() < numBlancos) {
+        int randomIndex = QRandomGenerator::global()->bounded(mBlancoModel->players().length() - 1);
+        uniqueIndices.insert(randomIndex);
+    }
+
+    for (int index : uniqueIndices) {
+        mTemporalWordList[index] = "Blanco";
+    }
 
     mBlancoModel->setWordList(mTemporalWordList);
+}
+
+void BlancoController::resolve()
+{
+
 }

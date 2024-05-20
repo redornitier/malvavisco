@@ -18,7 +18,7 @@ Item {
 
     ListModel {
         id: listModel
-        ListElement{playerName: ""}
+        // ListElement{playerName: ""}
     }
 
     ListView{
@@ -41,10 +41,10 @@ Item {
                 id: txtInput
                 anchors.fill: parent
                 anchors.leftMargin: 15
-                text: "asd"
+                text: initialText
                 maximumLength: 15
                 onTextChanged: BlancoController.changePlayerNameByIndex(index, text)
-                verticalAlignment: TextInput.AlignVCenter
+                verticalAlignment: Text.AlignVCenter
                 font.pixelSize: 16
                 font.family: hind.name
                 font.bold: true
@@ -77,9 +77,17 @@ Item {
         MouseArea{
             anchors.fill: parent
             onClicked: {
-                listModel.append({playerName: ""})
+                listModel.append({initialText: "Nuevo jugador"})
                 BlancoController.addPlayerIndex()
             }
+        }
+    }
+
+    Component.onCompleted: {
+        for(var i = 0; i < BlancoModel.minPeople; i++){
+            listModel.append({initialText: "Jugador " + (i+1)})
+            BlancoController.addPlayerIndex()
+            BlancoController.changePlayerNameByIndex(i, "Jugador " + i)
         }
     }
 }

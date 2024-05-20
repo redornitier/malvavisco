@@ -27,12 +27,13 @@ public:
 
 private:
     BlancoModel *mBlancoModel;
-    QStringList mTemporalPlayers{""};
-    QStringList mTemporalWordList{""};
+    QStringList mTemporalPlayers{};
+    QStringList mTemporalWordList{};
     QString mCurrentWord{""};
     void changeBlancoState();
     void checkButtonAppearance();
-    void createWordList();
+    void createWordList(int numBlancos);
+    void resolve();
 
 };
 
