@@ -51,6 +51,7 @@ Item {
     }
 
     Item{
+        id: switchContainer
         width: 40
         height: 19
         x: 306
@@ -61,7 +62,8 @@ Item {
             checked: true
 
             indicator: Rectangle {
-                anchors.fill: parent
+                implicitWidth: switchContainer.width
+                implicitHeight: switchContainer.height
                 x: 0
                 y: parent.height / 2 - height / 2
                 radius: 13
@@ -99,6 +101,7 @@ Item {
     }
 
     Item{
+        id: switchContainer3
         width: 40
         height: 19
         x: 306
@@ -109,7 +112,8 @@ Item {
             checked: false
 
             indicator: Rectangle {
-                anchors.fill: parent
+                implicitWidth: switchContainer3.width
+                implicitHeight: switchContainer3.height
                 x: 0
                 y: parent.height / 2 - height / 2
                 radius: 13
