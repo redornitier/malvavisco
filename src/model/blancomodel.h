@@ -47,6 +47,18 @@ public:
     int numberOfBlancos() const;
     void setNumberOfBlancos(int newNumberOfBlancos);
 
+    bool votedPlayerIsBlanco() const;
+    void setVotedPlayerIsBlanco(bool newVotedPlayerIsBlanco);
+
+    int leftBlancos() const;
+    void setLeftBlancos(int newLeftBlancos);
+
+    QString endState() const;
+    void setEndState(const QString &newEndState);
+
+    QString votedPlayerName() const;
+    void setVotedPlayerName(const QString &newVotedPlayerName);
+
 private:
     QStringList mPlayers{""};
     QStringList mWordList{""};
@@ -59,6 +71,10 @@ private:
     int mWordAndPlayerIt{0};
     int mDebateIndexPressed{-1};
     int mNumberOfBlancos{1};
+    bool mVotedPlayerIsBlanco{false};
+    QString mVotedPlayerName{""};
+    QString mEndState{"repeat"};
+    int mLeftBlancos{};
 
     Q_PROPERTY(QStringList players READ players WRITE setPlayers NOTIFY playersChanged FINAL)
     Q_PROPERTY(QString blancoState READ blancoState WRITE setBlancoState NOTIFY blancoStateChanged FINAL)
@@ -72,6 +88,14 @@ private:
     Q_PROPERTY(int debateIndexPressed READ debateIndexPressed WRITE setDebateIndexPressed NOTIFY debateIndexPressedChanged FINAL)
     Q_PROPERTY(int numberOfBlancos READ numberOfBlancos WRITE setNumberOfBlancos NOTIFY numberOfBlancosChanged FINAL)
 
+    Q_PROPERTY(bool votedPlayerIsBlanco READ votedPlayerIsBlanco WRITE setVotedPlayerIsBlanco NOTIFY votedPlayerIsBlancoChanged FINAL)
+
+    Q_PROPERTY(int leftBlancos READ leftBlancos WRITE setLeftBlancos NOTIFY leftBlancosChanged FINAL)
+
+    Q_PROPERTY(QString endState READ endState WRITE setEndState NOTIFY endStateChanged FINAL)
+
+    Q_PROPERTY(QString votedPlayerName READ votedPlayerName WRITE setVotedPlayerName NOTIFY votedPlayerNameChanged FINAL)
+
 signals:
     void playersChanged();
     void blancoStateChanged();
@@ -84,6 +108,10 @@ signals:
     void debateStateChanged();
     void debateIndexPressedChanged();
     void numberOfBlancosChanged();
+    void votedPlayerIsBlancoChanged();
+    void leftBlancosChanged();
+    void endStateChanged();
+    void votedPlayerNameChanged();
 };
 
 #endif // BLANCOMODEL_H

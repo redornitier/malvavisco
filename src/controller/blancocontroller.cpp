@@ -201,5 +201,34 @@ void BlancoController::createWordList(int numBlancos)
 
 void BlancoController::resolve()
 {
+    // guardamos la seleccion
+    if(mBlancoModel->wordList().at(mBlancoModel->debateIndexPressed()) == "Blanco")
+        mBlancoModel->setVotedPlayerIsBlanco(true);
 
+    // borramos el jugador y su palabra
+    auto players = mBlancoModel->players();
+    mBlancoModel->setVotedPlayerName(players.at(mBlancoModel->debateIndexPressed()));
+    players.removeAt(mBlancoModel->debateIndexPressed());
+    mBlancoModel->setPlayers(players);
+
+    auto wordList = mBlancoModel->wordList();
+    wordList.removeAt(mBlancoModel->debateIndexPressed());
+    mBlancoModel->setWordList(wordList);
+
+    // contamos cuantos blancos quedan
+    mBlancoModel->setLeftBlancos(mBlancoModel->wordList().count("Blanco"));
+
+    // seteamos el estado
+    if(mBlancoModel->leftBlancos() == 0){
+        // ganan los no-blancos
+        mBlancoModel->setEndState("blancosLose");
+    }else if(mBlancoModel->leftBlancos() > 0){
+        if(mBlancoModel->leftBlancos() >= (mBlancoModel->players().count() - mBlancoModel->leftBlancos())){
+            // ganan los blancos
+            mBlancoModel->setEndState("blancosWin");
+        }else{
+            // repetimos
+            mBlancoModel->setEndState("repeat");
+        }
+    }
 }

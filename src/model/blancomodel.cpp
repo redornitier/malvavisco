@@ -197,3 +197,55 @@ void BlancoModel::setNumberOfBlancos(int newNumberOfBlancos)
     mNumberOfBlancos = newNumberOfBlancos;
     emit numberOfBlancosChanged();
 }
+
+bool BlancoModel::votedPlayerIsBlanco() const
+{
+    return mVotedPlayerIsBlanco;
+}
+
+void BlancoModel::setVotedPlayerIsBlanco(bool newVotedPlayerIsBlanco)
+{
+    if (mVotedPlayerIsBlanco == newVotedPlayerIsBlanco)
+        return;
+    mVotedPlayerIsBlanco = newVotedPlayerIsBlanco;
+    emit votedPlayerIsBlancoChanged();
+}
+
+int BlancoModel::leftBlancos() const
+{
+    return mLeftBlancos;
+}
+
+void BlancoModel::setLeftBlancos(int newLeftBlancos)
+{
+    if (mLeftBlancos == newLeftBlancos)
+        return;
+    mLeftBlancos = newLeftBlancos;
+    emit leftBlancosChanged();
+}
+
+QString BlancoModel::endState() const
+{
+    return mEndState;
+}
+
+void BlancoModel::setEndState(const QString &newEndState)
+{
+    if (mEndState == newEndState)
+        return;
+    mEndState = newEndState;
+    emit endStateChanged();
+}
+
+QString BlancoModel::votedPlayerName() const
+{
+    return mVotedPlayerName;
+}
+
+void BlancoModel::setVotedPlayerName(const QString &newVotedPlayerName)
+{
+    if (mVotedPlayerName == newVotedPlayerName)
+        return;
+    mVotedPlayerName = newVotedPlayerName;
+    emit votedPlayerNameChanged();
+}
