@@ -156,6 +156,12 @@ void BlancoController::changeBlancoState()
             this->resolve();
             mBlancoModel->setBlancoState("End");
         }
+    }else if(mBlancoModel->blancoState() == "End"){
+        if(mBlancoModel->endState() == "repeat"){
+            mBlancoModel->setWordCallingState("preparation");
+            mBlancoModel->setDebateState("countdown");
+            mBlancoModel->setBlancoState("WordCalling");
+        }
     }
 }
 

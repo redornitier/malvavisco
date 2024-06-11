@@ -8,6 +8,7 @@ Item {
     property string blancoState: BlancoModel.blancoState
     onBlancoStateChanged:{
         if(blancoState === "WordCalling"){
+            listModel.clear();
             for (var i = 0; i < BlancoModel.players.length; i++)
                 listModel.append({playerName: BlancoModel.players[i]});
         }

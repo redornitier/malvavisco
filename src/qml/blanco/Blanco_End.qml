@@ -58,8 +58,8 @@ Item {
         font.family: monofett.name
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
-        color: "#F9F8FF"
-        text: "DE LOS\nBLANCOS"
+        color: BlancoModel.votedPlayerIsBlanco ? "#F9F8FF" : "#F9F8FF"
+        text: BlancoModel.votedPlayerIsBlanco ? "DE LOS\nBLANCOS" : "DE LOS\nQUE SABEN"
     }
 
     Text{
