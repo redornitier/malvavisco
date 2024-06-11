@@ -65,6 +65,7 @@ void BlancoModel::setPlayers(const QStringList &newPlayers)
     if (mPlayers == newPlayers)
         return;
     mPlayers = newPlayers;
+    qDebug()<<Q_FUNC_INFO<<mPlayers;
     emit playersChanged();
 }
 
@@ -143,6 +144,7 @@ void BlancoModel::setWordList(const QStringList &newWordList)
     if (mWordList == newWordList)
         return;
     mWordList = newWordList;
+    qDebug()<<Q_FUNC_INFO<<mWordList;
     emit wordListChanged();
 }
 

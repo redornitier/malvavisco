@@ -128,12 +128,12 @@ void BlancoController::changeBlancoState()
 {
     if(mBlancoModel->blancoState() == "AddPlayers"){
         mBlancoModel->setPlayers(mTemporalPlayers);
+        mBlancoModel->setBlancoState("Settings");
+    }else if(mBlancoModel->blancoState() == "Settings"){
         this->calculateWord();
         this->createWordList(mBlancoModel->numberOfBlancos());
-        mBlancoModel->setBlancoState("Settings");
-    }else if(mBlancoModel->blancoState() == "Settings")
         mBlancoModel->setBlancoState("WordAssign");
-    else if(mBlancoModel->blancoState() == "WordAssign"){
+    }else if(mBlancoModel->blancoState() == "WordAssign"){
         if(mBlancoModel->wordAssignState() == "player"){
             mBlancoModel->setWordAssignState("word");
         }else if(mBlancoModel->wordAssignState() == "word"){
@@ -159,6 +159,7 @@ void BlancoController::changeBlancoState()
     }else if(mBlancoModel->blancoState() == "End"){
         if(mBlancoModel->endState() == "repeat"){
             mBlancoModel->setWordCallingState("preparation");
+            mBlancoModel->setDebateIndexPressed(-1);
             mBlancoModel->setDebateState("countdown");
             mBlancoModel->setBlancoState("WordCalling");
         }

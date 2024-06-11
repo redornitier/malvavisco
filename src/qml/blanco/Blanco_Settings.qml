@@ -93,10 +93,11 @@ Item {
         y: 480
         SpinBox {
             anchors.fill: parent
-            to: BlancoModel.maxPeople
+            to: (BlancoModel.players.length / 2) - 1
             from: 1
             value: 1
             font.pixelSize: 10
+            onValueChanged: BlancoModel.numberOfBlancos = value
         }
     }
 
