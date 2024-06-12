@@ -7,7 +7,6 @@ Window {
     visible: true
     width: Common.appWidth
     height: Common.appHeight
-    visibility: Qt.platform.os === "android" ? "FullScreen" : "Windowed"
     title: qsTr("Malvavis.co.")
 
     FontLoader {id: monofett; source: "fonts/Monofett-Regular.ttf"}
