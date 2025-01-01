@@ -33,7 +33,7 @@ Item {
         id: txtCountdown
         font.family: hind.name
         font.pixelSize: 96
-        text: "5:00"
+        text: Qt.formatTime(new Date(0, 0, 0, 0, 0, BlancoModel.countDownTime), "mm:ss")
         color: "#5B63B7"
         x: 18
         y: 401
@@ -96,7 +96,24 @@ Item {
             }
             MouseArea{
                 anchors.fill: parent
-                onClicked: BlancoModel.debateIndexPressed = index
+                onClicked: {
+                    BlancoController.playerVoted()
+                    BlancoModel.debateIndexPressed = index
+                }
+            }
+        }
+    }
+
+    Timer {
+        id: timer
+        interval: 1000
+        running: BlancoModel.isCountDownRunning
+        repeat: true
+        onTriggered: {
+            if (BlancoModel.countDownTime > 0) {
+                BlancoModel.countDownTime -= 1
+            } else {
+                timer.stop()
             }
         }
     }

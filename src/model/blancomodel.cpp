@@ -251,3 +251,29 @@ void BlancoModel::setVotedPlayerName(const QString &newVotedPlayerName)
     mVotedPlayerName = newVotedPlayerName;
     emit votedPlayerNameChanged();
 }
+
+int BlancoModel::countDownTime() const
+{
+    return mCountDownTime;
+}
+
+void BlancoModel::setCountDownTime(int newCountDownTime)
+{
+    if (mCountDownTime == newCountDownTime)
+        return;
+    mCountDownTime = newCountDownTime;
+    emit countDownTimeChanged();
+}
+
+bool BlancoModel::isCountDownRunning() const
+{
+    return mIsCountDownRunning;
+}
+
+void BlancoModel::setIsCountDownRunning(bool newIsCountDownRunning)
+{
+    if (mIsCountDownRunning == newIsCountDownRunning)
+        return;
+    mIsCountDownRunning = newIsCountDownRunning;
+    emit isCountDownRunningChanged();
+}

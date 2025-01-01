@@ -106,7 +106,11 @@ void BlancoController::setModel(BlancoModel *blancoModel)
 void BlancoController::nextButtonClick()
 {
     this->changeBlancoState();
-    this->checkButtonAppearance();
+}
+
+void BlancoController::playerVoted()
+{
+    this->changeBlancoState(); // ERROR esto solo se deberia llamar cuando se pulsa boton siguiente
 }
 
 void BlancoController::changePlayerNameByIndex(int index, QString value)
@@ -127,16 +131,24 @@ void BlancoController::addPlayerIndex()
 void BlancoController::changeBlancoState()
 {
     if(mBlancoModel->blancoState() == "AddPlayers"){
+        mBlancoModel->setNextButtonColor(0x6E75CB);
+        mBlancoModel->setNextButtonTextValue("Siguiente");
         mBlancoModel->setPlayers(mTemporalPlayers);
         mBlancoModel->setBlancoState("Settings");
     }else if(mBlancoModel->blancoState() == "Settings"){
+        mBlancoModel->setNextButtonColor(0x6E75CB);
+        mBlancoModel->setNextButtonTextValue("Siguiente");
         this->calculateWord();
         this->createWordList(mBlancoModel->numberOfBlancos());
         mBlancoModel->setBlancoState("WordAssign");
     }else if(mBlancoModel->blancoState() == "WordAssign"){
         if(mBlancoModel->wordAssignState() == "player"){
+            mBlancoModel->setNextButtonColor(0xFF83A1);
+            mBlancoModel->setNextButtonTextValue("I'm alone");
             mBlancoModel->setWordAssignState("word");
         }else if(mBlancoModel->wordAssignState() == "word"){
+            mBlancoModel->setNextButtonColor(0x6E75CB);
+            mBlancoModel->setNextButtonTextValue("Siguiente");
             if(mBlancoModel->wordAndPlayerIt() == mBlancoModel->players().length()-1){
                 mBlancoModel->setBlancoState("WordCalling");
             }else{
@@ -147,9 +159,14 @@ void BlancoController::changeBlancoState()
     }else if(mBlancoModel->blancoState() == "WordCalling"){
         if(mBlancoModel->wordCallingState() == "preparation")
             mBlancoModel->setWordCallingState("calling");
-        else if(mBlancoModel->wordCallingState() == "calling")
+        else if(mBlancoModel->wordCallingState() == "calling"){
             mBlancoModel->setBlancoState("Debate");
+            mBlancoModel->setCountDownTime(20);
+            mBlancoModel->setIsCountDownRunning(true);
+        }
+
     }else if(mBlancoModel->blancoState() == "Debate"){
+        mBlancoModel->setIsCountDownRunning(false);
         if(mBlancoModel->debateState() == "countdown")
             mBlancoModel->setDebateState("voting");
         else if(mBlancoModel->debateState() == "voting"){
@@ -162,25 +179,8 @@ void BlancoController::changeBlancoState()
             mBlancoModel->setDebateIndexPressed(-1);
             mBlancoModel->setDebateState("countdown");
             mBlancoModel->setBlancoState("WordCalling");
-        }
-    }
-}
-
-void BlancoController::checkButtonAppearance()
-{
-    if(mBlancoModel->blancoState() == "AddPlayers"){
-        mBlancoModel->setNextButtonColor(0x6E75CB);
-        mBlancoModel->setNextButtonTextValue("Siguiente");
-    }else if(mBlancoModel->blancoState() == "Settings"){
-        mBlancoModel->setNextButtonColor(0x6E75CB);
-        mBlancoModel->setNextButtonTextValue("Siguiente");
-    }else if(mBlancoModel->blancoState() == "WordAssign"){
-        if(mBlancoModel->wordAssignState() == "player"){
-            mBlancoModel->setNextButtonColor(0xFF83A1);
-            mBlancoModel->setNextButtonTextValue("I'm alone");
-        }else if(mBlancoModel->wordAssignState() == "word"){
-            mBlancoModel->setNextButtonColor(0x6E75CB);
-            mBlancoModel->setNextButtonTextValue("Siguiente");
+            mBlancoModel->setCountDownTime(20);
+            mBlancoModel->setIsCountDownRunning(true);
         }
     }
 }

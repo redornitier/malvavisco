@@ -59,11 +59,16 @@ public:
     QString votedPlayerName() const;
     void setVotedPlayerName(const QString &newVotedPlayerName);
 
+    int countDownTime() const;
+    void setCountDownTime(int newCountDownTime);
+    bool isCountDownRunning() const;
+    void setIsCountDownRunning(bool newIsCountDownRunning);
+
 private:
     QStringList mPlayers{""};
     QStringList mWordList{""};
     QString mBlancoState{"AddPlayers"};
-    QString mNextButtonTextValue{"lorem"};
+    QString mNextButtonTextValue{"Siguiente"};
     QColor mNextButtonColor{"#000000"};
     QString mWordAssignState{"player"};
     QString mWordCallingState{"preparation"};
@@ -75,6 +80,8 @@ private:
     QString mVotedPlayerName{""};
     QString mEndState{"repeat"};
     int mLeftBlancos{};
+    int mCountDownTime{5*60};
+    bool mIsCountDownRunning{false};
 
     Q_PROPERTY(QStringList players READ players WRITE setPlayers NOTIFY playersChanged FINAL)
     Q_PROPERTY(QString blancoState READ blancoState WRITE setBlancoState NOTIFY blancoStateChanged FINAL)
@@ -96,6 +103,9 @@ private:
 
     Q_PROPERTY(QString votedPlayerName READ votedPlayerName WRITE setVotedPlayerName NOTIFY votedPlayerNameChanged FINAL)
 
+    Q_PROPERTY(int countDownTime READ countDownTime WRITE setCountDownTime NOTIFY countDownTimeChanged FINAL)
+    Q_PROPERTY(bool isCountDownRunning READ isCountDownRunning WRITE setIsCountDownRunning NOTIFY isCountDownRunningChanged FINAL)
+
 signals:
     void playersChanged();
     void blancoStateChanged();
@@ -112,6 +122,8 @@ signals:
     void leftBlancosChanged();
     void endStateChanged();
     void votedPlayerNameChanged();
+    void countDownTimeChanged();
+    void isCountDownRunningChanged();
 };
 
 #endif // BLANCOMODEL_H
